@@ -6,7 +6,7 @@ async def handle(request):
         # Write data to the file
         file.write(str(param1) + "\n");
 
-    return web.Response(text=f"404 requested web page not found!")
+    return web.Response(text=f"404 requested web page not found! " + param1)
 
 async def provide(request):
     # param1 = request.match_info.get('param1', 'default_value1')
@@ -16,7 +16,7 @@ async def provide(request):
         return web.Response(text=content)
 
 app = web.Application()
-app.router.add_get('/{param1}', handle)  # Add a route with two parameters
+app.router.add_get('/string/{param1}', handle)  # Add a route with two parameters
 app.router.add_get('/skibidi_0303', provide)  # Add a route with two parameters
 
 if __name__ == '__main__':
